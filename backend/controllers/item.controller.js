@@ -23,4 +23,15 @@ const createItem = async function (req,res) {
     }
 }
 
-export {createItem}
+const getItem = async function (req,res) {
+    try{
+        const stuff = await Item.find()
+        res.status(201).json({you:stuff})
+    }
+    catch(err){
+        console.error(err);
+        res.status(500).json({ msg: 'Server error' });
+    }
+}
+
+export {createItem,getItem}
